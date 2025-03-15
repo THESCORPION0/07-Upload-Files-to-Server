@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import 'express-async-errors'
 // Extra Security packages
 import helmet from 'helmet';
@@ -10,6 +10,7 @@ import startServer from './utils/startServer.js';
 import mountRoutes from './routes/index.js';
 
 const app = express();
+dotenv.config();
 
 app.set('trust proxy', 1)
 app.use(rateLimiter(

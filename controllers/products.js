@@ -14,7 +14,6 @@ const handleProductImage = asyncHandler(
     if (req.files) {
       if (req.files.coverImage) {
         const coverName = `product-${Date.now()}-Cover.jpeg`;
-        console.log(req.file);
 
         await sharp(req.files.coverImage[0].buffer)
           .toFormat("jpeg")
@@ -27,7 +26,6 @@ const handleProductImage = asyncHandler(
         await Promise.all(
           req.files.images.map(async (image, index) => {
             const imageName = `product-${Date.now()}N${index + 1}.jpeg`;
-            console.log(req.file);
             await sharp(image.buffer)
               .toFormat("jpeg")
               .jpeg({ quality: 95 })
